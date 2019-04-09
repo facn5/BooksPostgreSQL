@@ -1,6 +1,6 @@
 # BooksPostgresSQL
 
-[Link to our application](https://.herokuapp.com/)
+[Link to our application](https://bookspostgresql.herokuapp.com/)
 
 ### What ?
 
@@ -32,7 +32,7 @@ can reserve it for certain dates, with the freedom of unreseving it at anytime.
 - [ ] Clear user journey (even if you take one of our suggested ideas, document the user journey in your readme)
 - [ ] test your server routes with supertest
 - [ ] test your pure functions both server and client side
-- [ ] set up a test database so that yo
+- [ ] set up a test database so that you can test your database queries
 
 ### Stretch goals
 
@@ -42,9 +42,8 @@ can reserve it for certain dates, with the freedom of unreseving it at anytime.
 ### Tools/technologies used
 * Heroku - For deploying/hosting server and database.
 * Tape - for testing.
-* PostGreSQL - for database
+* PostgreSQL - for database
 * nyc - for testing.
-* nock - for testing APIs.
 * Supertest for testing.
 * nodemon - for hosting locally.
 * Node.js - backend.
