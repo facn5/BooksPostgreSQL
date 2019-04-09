@@ -8,10 +8,11 @@ const router = (req, res) => {
   } else if (url.indexOf('public') !== -1) {
     handler.public(url, res);
   } else if (url === '/getbooks') {
-    if( req.method === "POST")
+    req.method === "POST"
     handler.data(res);
-    else
-    handler.error(res);
+  } else if (url === "/postdata") {
+    // req.method === "POST"
+    handler.post(res);
   } else {
     handler.error(res);
   }

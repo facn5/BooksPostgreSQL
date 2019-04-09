@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const getData = require('./queries/getData');
-
+const postData = require('./queries/postData');
 let extType = {
   html: { "content-type": "text/html" },
   css: { "content-type": "text/css" },
@@ -58,10 +58,28 @@ const handleError = (res) => {
   })
 }
 
+const handlePost = (res) => {
+
+    let data = '';
+    res.on('data', chunk => {
+      data += chunk;
+    });
+    res.on('end', () => {
+      const { name, author, year } = qs.parse(data);
+      postData(name, author, year => {
+        if (err) return serverError(err, response);
+        res.writeHead(302, { 'Location': '/' });
+        res.end()
+      });
+    });
+  };
+
+
 
 module.exports = {
   home: handleHome,
   public: handlePublic,
   data: handleData,
-  error: handleError
+  error: handleError,
+  post: handlePost
 }
