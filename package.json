@@ -1,0 +1,30 @@
+{
+  "name": "BooksPostgresSQL",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facn5/BooksPostgresSQL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/facn5/BooksPostgresSQL/issues"
+  },
+  "homepage": "https://github.com/facn5/BooksPostgresSQL#readme",
+  "dependencies": {
+    "nodemon": "^1.18.11"
+  },
+  "devDependencies": {
+    "tap-spec": "^5.0.0",
+    "tape": "^4.10.1"
+  }
+}
