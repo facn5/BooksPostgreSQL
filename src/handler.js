@@ -52,7 +52,7 @@ const handleError = (res) => {
       res.writeHead(500);
       res.end("error500");
     } else {
-      res.writeHead(200, extType.html);
+      res.writeHead(404, extType.html);
       res.end(file);
     }
   })

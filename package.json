@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "node tests/test.js | tap-spec",
+    "testdb": "node tests/db_test.js | tap-spec",
+    "testbackend": "node tests/backend_test.js | tap-spec",
     "connect": "nodemon src/server.js",
     "start": "node src/server.js"
   },
