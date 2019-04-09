@@ -1,10 +1,10 @@
-const dbConnection = require('../database/db_connection.js');
+const dbConnection = require('../database/db_connection');
 
-const getData = cb => {
-  dbConnection.query('SELECT * FROM users', (err, res) => {
-    if (err) return cb(err);
-    cb(null, res.rows);
+const getData = (cb) => {
+  dbConnection.query('SELECT * FROM books;',(err, result) => {
+    if(err) cb(err);
+    cb(null, result.rows);
   });
-};
+}
 
 module.exports = getData;
