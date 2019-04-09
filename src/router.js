@@ -8,7 +8,7 @@ const router = (req, res) => {
   } else if (url.indexOf('public') !== -1) {
     handler.public(url, res);
   } else if (url === '/getbooks') {
-    req.method === "POST"
+    if( req.method === "GET")
     handler.data(res);
   } else if (url === "/postdata") {
     // req.method === "POST"

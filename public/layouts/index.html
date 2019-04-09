@@ -6,20 +6,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link type="text/css" rel="stylesheet" href="public/styles/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-  <title>Document</title>
+  <title>Sharing is caring</title>
 </head>
 
 <body>
 
+<h1>BooksPostgresSQL</h1>
+<div class="arrow--container">
+  <p>Click on the arrow to add a book</p>
+<i id="arrow-down" class="fas fa-arrow-circle-down"></i>
+</div>
+  <form class="add-form" action="/addbook" method="POST">
+    <div class="absolute-center">
+    <div class="add-book--container">
+    <label for="books">Name of the book:</label>
+    <input required placeholder="Little red riding hood" type="text" name="book" id="books">
+    <br>
+    <label for="author">Author of the book:</label>
+    <input required placeholder="John smith" type="text" name="author" id="author">
+    <br>
+    <label for="year">Publish year:</label>
+    <input required placeholder="1984" type="text" name="year" id="year">
+    <br>
+    <label for="shortDesc">Short description:</label>
+    <input required placeholder="It starts with a little girl wearing a red hat" type="text" name="shortDesc" id="shortDesc">
 
-  <form action="/addbook" method="POST">
-    <label for="books"></label>
-    <input type="text" name="book" id="books">
-    <button >Submit</button>
-
+    <button>Submit</button>
+  </div>
+</div>
   </form>
-  <script src="public/scripts/dom.js"></script>
+
+<div id="container">
+  
+</div>
+
+  <script type="text/javascript" src="public/scripts/fetch.js"></script>
+  <script type="text/javascript" src="public/scripts/dom.js"></script>
+
 </body>
 
 </html>
