@@ -28,11 +28,11 @@ can reserve it for certain dates, with the freedom of unreseving it at anytime.
 - [x] Build script for your database
 - [x] Security concerns appropriately considered (you must protect against script injections!)
 - [ ] Content dynamic, but DOM manipulation kept to a minimum
-- [ ] Mobile-first design
-- [ ] Clear user journey (even if you take one of our suggested ideas, document the user journey in your readme)
+- [x] Mobile-first design
+- [x] Clear user journey (even if you take one of our suggested ideas, document the user journey in your readme)
 - [x] test your server routes with supertest
 - [ ] test your pure functions both server and client side
-- [ ] set up a test database so that you can test your database queries
+- [x] set up a test database so that you can test your database queries
 
 ### Stretch goals
 
