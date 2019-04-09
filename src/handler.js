@@ -1,10 +1,12 @@
 const fs = require('fs');
 const path = require('path');
+const getData = require('./queries/getData');
 
 let extType = {
-  html: { "content-type": "text/html"},
-  css: { "content-type": "text/css"},
-  js: { "content-type": "application/javascript"}
+  html: { "content-type": "text/html" },
+  css: { "content-type": "text/css" },
+  js: { "content-type": "application/javascript" },
+  json: {'content-type': 'application/json'}
 }
 
 const handleHome = (res) => {
@@ -34,6 +36,15 @@ const handlePublic = (url, res) => {
   })
 }
 
+const handleData = (res) => {
+  getData((err,result) => {
+    if(err) console.log('error');
+    let dynamicData = JSON.stringify(result);
+    res.writeHead(200,extType.json);
+    res.end(dynamicData);
+  });
+}
+
 const handleError = (res) => {
   let pathFile = path.join(__dirname, "..", "public", "layouts", "404.html");
   fs.readFile(pathFile, (err, file) => {
@@ -51,5 +62,6 @@ const handleError = (res) => {
 module.exports = {
   home: handleHome,
   public: handlePublic,
+  data: handleData,
   error: handleError
 }
