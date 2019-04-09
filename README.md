@@ -39,6 +39,9 @@ can reserve it for certain dates, with the freedom of unreseving it at anytime.
 - [ ] Rating books
 - [ ] Books can simultaneously be reserved by multiple users but for different dates
 
+### Design artheticture
+![Design artheticture 01](https://raw.githubusercontent.com/facn5/BooksPostgreSQL/Assets/public/assets/design_artheticture00.png)
+
 ### Tools/technologies used
 * Heroku - For deploying/hosting server and database.
 * Tape - for testing.
