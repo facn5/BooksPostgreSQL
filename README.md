@@ -4,15 +4,10 @@
 
 ### What ?
 
-u can test your database queries
-
-### Our stretch goals
-
-This week's project involved setting up a database which we connect to via a node.js server. we used the client data to make a dynamic web app for your front-end.
+This week's project involved setting up a database which clients are connected to via a node.js server. We used client data to make a dynamic web app.
 
 A books sharing application where people can add their own books to the database so everyone who is interested in borrowing it
 can reserve it for certain dates, with the freedom of unreseving it at anytime.
-
 ### Routes
 
 * Homepage:- 
@@ -38,6 +33,9 @@ can reserve it for certain dates, with the freedom of unreseving it at anytime.
 - [ ] test your server routes with supertest
 - [ ] test your pure functions both server and client side
 - [ ] set up a test database so that yo
+
+### Stretch goals
+
 - [ ] Rating books
 - [ ] Books can simultaneously be reserved by multiple users but for different dates
 
