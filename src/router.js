@@ -10,8 +10,9 @@ const router = (req, res) => {
   } else if (url === '/getbooks') {
     if( req.method === "GET")
     handler.data(res);
-    else
-    handler.error(res);
+  } else if (url === "/postdata") {
+    // req.method === "POST"
+    handler.post(res);
   } else {
     handler.error(res);
   }
