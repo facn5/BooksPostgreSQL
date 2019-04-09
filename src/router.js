@@ -5,9 +5,10 @@ const router=(req,res) => {
   let url=req.url;
   if(url==="/"){
     handler.home(res) ;
+  }else if(url.indexOf('public') !== -1){
+    handler.public(url, res);
   }else {
-    res.writeHead(404);
-    res.end("not found 404");
+    handler.error(res);
   }
 }
 
