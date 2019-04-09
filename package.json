@@ -9,7 +9,7 @@
   "scripts": {
     "test": "node tests/test.js | tap-spec",
     "connect": "nodemon src/server.js",
-    "start":"node src/server.js"
+    "start": "node src/server.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/facn5/BooksPostgresSQL#readme",
   "dependencies": {
-    "nodemon": "^1.18.11"
+    "env2": "^2.2.2",
+    "nodemon": "^1.18.11",
+    "pg": "^7.9.0"
   },
   "devDependencies": {
     "tap-spec": "^5.0.0",
