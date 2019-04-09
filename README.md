@@ -27,20 +27,19 @@ can reserve it for certain dates, with the freedom of unreseving it at anytime.
 
 ### Main goals
 
--[ ] Simple web app with a node server and a database
--[ ] Your database comes with a schema, which should be documented in your readme (along with any other architectural decisions)
--[ ] Database hosted on Heroku, or locally
--[ ] Build script for your database
--[ ] Security concerns appropriately considered (you must protect against script injections!)
--[ ] Content dynamic, but DOM manipulation kept to a minimum
--[ ] Mobile-first design
--[ ] Clear user journey (even if you take one of our suggested ideas, document the user journey in your readme)
--[ ] test your server routes with supertest
--[ ] test your pure functions both server and client side
--[ ] set up a test database so that yo
-
--[ ] Rating books
--[ ] Books can simultaneously be reserved by multiple users but for different dates
+- [ ] Simple web app with a node server and a database
+- [ ] Your database comes with a schema, which should be documented in your readme (along with any other architectural decisions)
+- [ ] Database hosted on Heroku, or locally
+- [ ] Build script for your database
+- [ ] Security concerns appropriately considered (you must protect against script injections!)
+- [ ] Content dynamic, but DOM manipulation kept to a minimum
+- [ ] Mobile-first design
+- [ ] Clear user journey (even if you take one of our suggested ideas, document the user journey in your readme)
+- [ ] test your server routes with supertest
+- [ ] test your pure functions both server and client side
+- [ ] set up a test database so that yo
+- [ ] Rating books
+- [ ] Books can simultaneously be reserved by multiple users but for different dates
 
 ### Tools/technologies used
 * Heroku - For deploying/hosting server and database.
