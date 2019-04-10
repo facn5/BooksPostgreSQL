@@ -179,7 +179,7 @@ input[type="text"] {
   max-width:400px;
 }
 
-.book-item * {
+.book-item *:not(button) {
   margin: 0;
   padding: 20px;
   padding-bottom: 10px;
