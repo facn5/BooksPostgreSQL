@@ -3,13 +3,21 @@ var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$
 if( !cookieValue || cookieValue == null || cookieValue == undefined || cookieValue == "" ) {
   div_show();
   document.getElementById('WelcomeMsg').style.display = "none";
+  document.getElementById('Logout').style.display = "none";
 }
 else {
   document.getElementById('WelcomeMsg').innerText = "Hello " + cookieValue+"!";
+  document.getElementById('Logout').style.display = "inline-block";
   document.getElementById('WelcomeMsg').style.display = "block";
 
 
 }
+
+document.getElementById('Logout').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.cookie = "name=";
+  location.reload();
+})
 
 document.getElementById("arrow-down").addEventListener("click", function(e) {
 
@@ -55,7 +63,10 @@ function create(value) {
 
   document.getElementById('WelcomeMsg').innerText = "Hello " + value+"!";
   document.getElementById('WelcomeMsg').style.display = "block";
+  document.getElementById('Logout').style.display = "inline-block";
+
 }
+
 
 function div_show() {
 document.getElementById('abc').style.display = "block";
