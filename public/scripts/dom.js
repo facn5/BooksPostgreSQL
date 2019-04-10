@@ -80,8 +80,8 @@ function div_hide(){
 document.getElementById('abc').style.display = "none";
 }
 
-function updateDom( data ) {
 
+function updateDom(data) {
 
   var container = document.getElementById('container');
 
@@ -95,8 +95,6 @@ function updateDom( data ) {
     resButton.setAttribute('class', "res-button");
     resButton.id = "ko" + i;
 
-    newElement.setAttribute('id', `${item.id}`);
-    newElement.setAttribute("onclick", 'return itemClicked(\'' + item.id + '\');')
     var newH3 = document.createElement('h3');
     var p0 = document.createElement('p');
     var p1 = document.createElement('p');
@@ -124,8 +122,8 @@ function updateDom( data ) {
 
   }
 
-  })
 }
+
 
 const itemClicked = (id) => {
   let deleted = "deleted=" + id;
