@@ -1,14 +1,15 @@
 const fs = require('fs');
 const path = require('path');
+const qs = require('querystring');
 const getData = require('./queries/getData');
 const postData = require('./queries/postData');
-const qs = require('querystring');
+const deleteData = require('./queries/deleteData');
 
 let extType = {
   html: { "content-type": "text/html" },
   css: { "content-type": "text/css" },
   js: { "content-type": "application/javascript" },
-  json: {'content-type': 'application/json'}
+  json: { 'content-type': 'application/json' }
 }
 
 const handleHome = (res) => {
@@ -39,15 +40,42 @@ const handlePublic = (url, res) => {
 }
 
 const handleData = (res) => {
-  getData((err,result) => {
-    if(err) {
+  getData((err, result) => {
+    if (err) {
       res.writeHead(500);
       res.end("server error 500");
     }
     let dynamicData = JSON.stringify(result);
-    res.writeHead(200,extType.json);
+    res.writeHead(200, extType.json);
     res.end(dynamicData);
   });
+}
+
+const handlePost = (req, res) => {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+  req.on('end', () => {
+    if (body != null) {
+      const ps = qs.parse(body);
+      postData(ps.book, ps.author, ps.year, ps.shortDesc, res, (err, result) => {
+        if (err) return console.log('error');
+        res.writeHead(302, { 'Location': '/' });
+        res.end()
+      });
+    }
+  });
+}
+
+const handleDelete = (url, res) => {
+  url = decodeURI(url);
+  var queryString = url.split("=")[1];
+  deleteData(queryString, (err, result) => {
+    if (err) return console.log('error deleting');
+    res.writeHead(302, { 'Location': '/' });
+    res.end()
+  })
 }
 
 const handleError = (res) => {
@@ -63,39 +91,11 @@ const handleError = (res) => {
   })
 }
 
-const handlePost = (req, res) => {
-
-      let body = '';
-      req.on('data', chunk => {
-          body += chunk.toString(); // convert Buffer to string
-      });
-      req.on('end', () => {
-          if( body != null )
-          {
-            const hey = qs.parse(body);
-            postData(hey.book, hey.author, hey.year, hey.shortDesc, res, returnPostData, (err) => {
-              if( err )   console.log('error');
-
-
-            });
-          }
-      });
-
-  }
-
-const returnPostData = ( err, data, res ) => {
-  if (err) return console.log('error');
-
-  res.writeHead(302, { 'Location': '/' });
-  res.end()
-}
-
-
-
 module.exports = {
   home: handleHome,
   public: handlePublic,
   data: handleData,
   error: handleError,
-  post: handlePost
+  post: handlePost,
+  delete: handleDelete
 }
