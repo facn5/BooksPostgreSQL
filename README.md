@@ -10,7 +10,10 @@ A books sharing application where people can add their own books to the database
 can reserve it for certain dates, with the freedom of unreseving it at anytime.
 ### Routes
 
-* Homepage:- 
+* Homepage:- For loginning for the first time into our application, you will be asked to provide us your name, to create
+for you a username that has your name - ( this is a simple authentication to distinguish our users )
+
+You can Add a book, Delete a book, Review a book and make a reservation for it.
 
 ### How to use locally?
 
@@ -27,12 +30,13 @@ can reserve it for certain dates, with the freedom of unreseving it at anytime.
 - [x] Database hosted on Heroku, or locally
 - [x] Build script for your database
 - [x] Security concerns appropriately considered (you must protect against script injections!)
-- [ ] Content dynamic, but DOM manipulation kept to a minimum
+- [x] Content dynamic, but DOM manipulation kept to a minimum
 - [x] Mobile-first design
 - [x] Clear user journey (even if you take one of our suggested ideas, document the user journey in your readme)
 - [x] test your server routes with supertest
 - [ ] test your pure functions both server and client side
 - [x] set up a test database so that you can test your database queries
+- [x] simple authentication
 
 ### Stretch goals
 
@@ -49,10 +53,11 @@ can reserve it for certain dates, with the freedom of unreseving it at anytime.
 * nyc - for testing.
 * Supertest for testing.
 * nodemon - for hosting locally.
+* cookies web api - for a simple authentication
 * Node.js - backend.
 
 ### Team members
-* Karam: [Github](https://github.com/karam1ashqar)
-* Faris: [Github](https://github.com/faris114)
-* Obaydah: [Github](https://github.com/obayda)
+* Karam: [Github Profile Page](https://github.com/karam1ashqar)
+* Faris: [Github Profile Page](https://github.com/faris114)
+* Obaydah: [Github Profile Page](https://github.com/obayda)
 
