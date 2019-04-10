@@ -59,12 +59,20 @@ const handlePost = (req, res) => {
   req.on('end', () => {
     if (body != null) {
       const ps = qs.parse(body);
-      postData(ps.book, ps.author, ps.year, ps.shortDesc, res, (err, result) => {
+      postData.post(ps.book, ps.author, ps.year, ps.shortDesc, res, (err, result) => {
         if (err) return console.log('error');
         res.writeHead(302, { 'Location': '/' });
         res.end()
       });
     }
+  });
+}
+
+const handleCreate = (res, value) => {
+  postData.create(value, res, (err, result) => {
+    if (err) return console.log('error');
+    res.writeHead(302, { 'Location': '/' });
+    res.end()
   });
 }
 
@@ -89,42 +97,6 @@ const handleError = (res) => {
       res.end(file);
     }
   })
-}
-
-
-const handlePost = (req, res) => {
-
-      let body = '';
-      req.on('data', chunk => {
-          body += chunk.toString(); // convert Buffer to string
-      });
-      req.on('end', () => {
-          if( body != null )
-          {
-            const hey = qs.parse(body);
-            postData.postData(hey.book, hey.author, hey.year, hey.shortDesc, res, returnPostData, (err) => {
-              if( err )   console.log('error');
-
-
-            });
-          }
-      });
-
-  }
-
-const returnPostData = ( err, data, res ) => {
-  if (err) return console.log('error');
-
-  res.writeHead(302, { 'Location': '/' });
-  res.end()
-}
-
-const handleCreate = ( res, value ) => {
-  postData.createAccount(value, res, returnPostData, (err) => {
-    if( err )  console.log('error');
-
-
-  });
 }
 
 module.exports = {
