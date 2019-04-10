@@ -17,7 +17,6 @@ document.getElementById("arrow-down").addEventListener("click", function(e) {
 getcurrency(updateDom);
 
 function updateDom( data ) {
-  console.log(data);
 
   var container = document.getElementById('container');
 
@@ -29,13 +28,12 @@ function updateDom( data ) {
     var p0 = document.createElement('p');
     var p1 = document.createElement('p');
     newH3.innerText = item.name;
-    p0.innerText = item.name;
+    p0.innerText = item.shortdesc;
     p1.innerText = item.year + " By " + item.author;
     newElement.append(newH3);
     newElement.append(p0);
     newElement.append(p1);
     container.append(newElement);
-
 
   } )
 }
