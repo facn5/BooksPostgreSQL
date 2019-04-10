@@ -7,4 +7,21 @@ const getData = (cb) => {
   });
 }
 
-module.exports = getData;
+const getBookid = (id, cb) => {
+  dbConnection.query('SELECT * FROM books where id = '+id+';',(err, result) => {
+    if(err) cb(err);
+    cb(null, result.rows);
+  });
+}
+
+const getUserReservation = (value, cb) => {
+  dbConnection.query(`SELECT U.name, B.name from users U, books B join res_books R on R.user_id is not null where R.book_id = B.id and U.id = ${value} and U.id = R.user_id group by U.name, B.name;`,(err, result) => {
+    if(err) cb(err);
+    cb(null, result.rows);
+  });
+}
+
+module.exports = {
+  getData,
+  getBookid
+}

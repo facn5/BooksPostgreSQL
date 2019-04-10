@@ -18,9 +18,23 @@ function createAccountFetch(value) {
     return response.json();
   })
   .then(function(data){
-    // console.log(data);
-    // console.log("data body",data.body);
+  //   console.log('hey');
+  // console.log(data);
     return;
+  })
+  .catch(function(error) {
+    return error;
+  })
+}
+
+function ReserveFetch(bookid, userid ) {
+  fetch('/reserve?' + bookid + "&" + userid )
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data){
+    return;
+
   })
   .catch(function(error) {
     return error;

@@ -1,4 +1,5 @@
 var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+var userid;
 
 if (!cookieValue || cookieValue == null || cookieValue == undefined || cookieValue == "") {
   div_show();
@@ -37,6 +38,11 @@ document.getElementById("arrow-down").addEventListener("click", function (e) {
 });
 
 getcurrency(updateDom);
+// getuserid(setid);
+
+function setid( data ) {
+  userid = data;
+}
 
 // Validating Empty Field
 function check_empty() {
@@ -70,6 +76,7 @@ function updateDom(data) {
 
   for (var i = 0; i <= data.length - 1; i++) {
     var newElement = document.createElement('DIV');
+
     var resButton = document.createElement('button');
     var input = document.createElement("input");
     var delBtn = document.createElement('button');
@@ -82,32 +89,48 @@ function updateDom(data) {
     delBtn.setAttribute("onclick", 'return itemClicked(\'' + data[i].id + '\')');
 
     newElement.setAttribute('class', "book-item");
+
+
+
     resButton.setAttribute('class', "res-button");
     resButton.id = "ko" + i;
+    resButton.value = data[i].id;
 
     div.setAttribute('id','div-id');
 
     newH3.innerText = data[i].name;
     p0.innerText = data[i].shortdesc;
     p1.innerText = data[i].year + " By " + data[i].author;
-    resButton.innerText = "Reserve the book"
+
+    resButton.innerText = ( ( data[i].reserved == 1 ? "Unr" : "R"  ) + "eserve the book" )
+
     delBtn.innerText = "Delete the book"
     newElement.append(newH3);
     newElement.append(p0);
     newElement.append(p1);
     container.append(newElement);
+    newElement.append(resButton);
+    // var input = document.createElement("input");
+    //
+    // input.setAttribute('type', 'date');
+    // input.style.display = "block"
+    // input.setAttribute('id', 'text' + i);
+    p1.setAttribute("id", i);
+    document.getElementById("ko" + i).addEventListener("click", (e) => {
+      //e.preventDefault()
+        ReserveFetch(e.target.value, cookieValue);
+
+        e.target.innerText = e.target.innerText.indexOf('Un') !== -1 ? "Reserve the book" : "Unreserve the book";
+  //    widow.location.href =
+
+    //  document.getElementById((e.target.id).charAt(2)).append(input);
+    })
     newElement.append(div);
     div.append(resButton);
     div.append(delBtn);
 
-    input.setAttribute('type', 'date');
-    input.style.display = "block"
-    input.setAttribute('id', 'text' + i);
-    p1.setAttribute("id", i);
-    document.getElementById("ko" + i).addEventListener("click", (e) => {
-    document.getElementById((e.target.id).charAt(2)).append(input);
 
-    });
+
   }
 }
 
