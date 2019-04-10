@@ -1,26 +1,24 @@
 var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 var userid;
 
-if( !cookieValue || cookieValue == null || cookieValue == undefined || cookieValue == "" ) {
+if (!cookieValue || cookieValue == null || cookieValue == undefined || cookieValue == "") {
   div_show();
   document.getElementById('WelcomeMsg').style.display = "none";
   document.getElementById('Logout').style.display = "none";
 }
 else {
-  document.getElementById('WelcomeMsg').innerText = "Hello " + cookieValue+"!";
+  document.getElementById('WelcomeMsg').innerText = "Hello " + cookieValue + "!";
   document.getElementById('Logout').style.display = "inline-block";
   document.getElementById('WelcomeMsg').style.display = "block";
-
-
 }
 
-document.getElementById('Logout').addEventListener('click', function(e) {
+document.getElementById('Logout').addEventListener('click', function (e) {
   e.preventDefault();
   document.cookie = "name=";
   location.reload();
 })
 
-document.getElementById("arrow-down").addEventListener("click", function(e) {
+document.getElementById("arrow-down").addEventListener("click", function (e) {
 
   e.preventDefault();
 
@@ -39,10 +37,6 @@ document.getElementById("arrow-down").addEventListener("click", function(e) {
   }
 });
 
-
-
-
-
 getcurrency(updateDom);
 // getuserid(setid);
 
@@ -50,52 +44,50 @@ function setid( data ) {
   userid = data;
 }
 
-
-
-
 // Validating Empty Field
 function check_empty() {
-if (document.getElementById('name').value.trim() == "" ) {
-alert("Please enter your full name");
-} else {
-// document.getElementById('formy').submit();
-div_hide();
-
-createAccountFetch(document.getElementById('name').value );
-create( document.getElementById('name').value );
-//alert("Form Submitted Successfully...");
+  if (document.getElementById('name').value.trim() == "") {
+    alert("Please enter your full name");
+  } else {
+    div_hide();
+    createAccountFetch(document.getElementById('name').value);
+    create(document.getElementById('name').value);
+  }
 }
-}
-
 
 function create(value) {
-  document.cookie = "name="+value;
-
-  document.getElementById('WelcomeMsg').innerText = "Hello " + value+"!";
+  document.cookie = "name=" + value;
+  document.getElementById('WelcomeMsg').innerText = "Hello " + value + "!";
   document.getElementById('WelcomeMsg').style.display = "block";
   document.getElementById('Logout').style.display = "inline-block";
-
 }
-
 
 function div_show() {
-document.getElementById('abc').style.display = "block";
+  document.getElementById('abc').style.display = "block";
 }
 
-function div_hide(){
-document.getElementById('abc').style.display = "none";
+function div_hide() {
+  document.getElementById('abc').style.display = "none";
 }
-
 
 function updateDom(data) {
 
   var container = document.getElementById('container');
 
-
-
   for (var i = 0; i <= data.length - 1; i++) {
     var newElement = document.createElement('DIV');
-    var resButton = document.createElement('button')
+
+    var resButton = document.createElement('button');
+    var input = document.createElement("input");
+    var delBtn = document.createElement('button');
+    var newH3 = document.createElement('h3');
+    var p0 = document.createElement('p');
+    var p1 = document.createElement('p');
+    var div = document.createElement('div');
+
+    delBtn.setAttribute('class', "del-button");
+    delBtn.setAttribute("onclick", 'return itemClicked(\'' + data[i].id + '\')');
+
     newElement.setAttribute('class', "book-item");
 
 
@@ -104,15 +96,15 @@ function updateDom(data) {
     resButton.id = "ko" + i;
     resButton.value = data[i].id;
 
-    var newH3 = document.createElement('h3');
-    var p0 = document.createElement('p');
-    var p1 = document.createElement('p');
+    div.setAttribute('id','div-id');
 
     newH3.innerText = data[i].name;
     p0.innerText = data[i].shortdesc;
     p1.innerText = data[i].year + " By " + data[i].author;
 
     resButton.innerText = ( ( data[i].reserved == 1 ? "Unr" : "R"  ) + "eserve the book" )
+
+    delBtn.innerText = "Delete the book"
     newElement.append(newH3);
     newElement.append(p0);
     newElement.append(p1);
@@ -133,11 +125,14 @@ function updateDom(data) {
 
     //  document.getElementById((e.target.id).charAt(2)).append(input);
     })
+    newElement.append(div);
+    div.append(resButton);
+    div.append(delBtn);
+
+
 
   }
-
 }
-
 
 const itemClicked = (id) => {
   let deleted = "deleted=" + id;
