@@ -1,3 +1,6 @@
+
+document.getElementById("arrow-down").addEventListener("click", function (e) {
+
 var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
 if( !cookieValue || cookieValue == null || cookieValue == undefined || cookieValue == "" ) {
@@ -12,6 +15,7 @@ else {
 }
 
 document.getElementById("arrow-down").addEventListener("click", function(e) {
+
   e.preventDefault();
 
   var x = document.getElementsByClassName("add-book--container")[0];
@@ -30,6 +34,9 @@ document.getElementById("arrow-down").addEventListener("click", function(e) {
 });
 
 getcurrency(updateDom);
+
+
+
 
 // Validating Empty Field
 function check_empty() {
@@ -63,12 +70,15 @@ document.getElementById('abc').style.display = "none";
 
 function updateDom( data ) {
 
+
   var container = document.getElementById('container');
 
-  data.map( function( item ){
+  data.map(function (item) {
 
     var newElement = document.createElement('DIV');
     newElement.setAttribute('class', "book-item");
+    newElement.setAttribute('id', `${item.id}`);
+    newElement.setAttribute("onclick", 'return itemClicked(\'' + item.id + '\');')
     var newH3 = document.createElement('h3');
     var p0 = document.createElement('p');
     var p1 = document.createElement('p');
@@ -79,6 +89,10 @@ function updateDom( data ) {
     newElement.append(p0);
     newElement.append(p1);
     container.append(newElement);
+  })
+}
 
-  } )
+const itemClicked = (id) => {
+  let deleted = "deleted=" + id;
+  window.location.href = deleted;
 }
