@@ -27,7 +27,6 @@ position:absolute;
 left:50%;
 top:17%;
 margin-left:-202px;
-font-family:'Raleway',sans-serif
 }
 #formy {
 max-width:300px;
@@ -35,7 +34,6 @@ min-width:250px;
 padding:10px 50px;
 border:2px solid gray;
 border-radius:10px;
-font-family:raleway;
 background-color:#fff
 }
 
@@ -45,11 +43,6 @@ border:0;
 border-top:1px solid #ccc
 }
 
-#name {
-background-image:url(../images/name.jpg);
-background-repeat:no-repeat;
-background-position:5px 7px
-}
 #submit {
 text-decoration:none;
 width:100%;
@@ -78,6 +71,10 @@ form {
 
 .add-book--container {
   width: min-content;
+  background-repeat: round;
+  background-image: url(../assets/cover.png);
+  background-size: cover;
+  background-color: black;
   padding: 40px;
   visibility: hidden;
   opacity: 0;
@@ -89,7 +86,6 @@ form {
   transition: .6s ease;
   border: 1px #666 solid;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
-  background-image:linear-gradient(#F8F8F8,#FFF);
 }
 
 .add-book--container:hover {
@@ -115,7 +111,7 @@ label {
   margin-bottom: 10px;
   display: block;
   text-align: left;
-  color: #141414;
+  color: #FFF;
 }
 
 .add-form {
