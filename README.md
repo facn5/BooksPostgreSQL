@@ -33,6 +33,7 @@ can reserve it for certain dates, with the freedom of unreseving it at anytime.
 - [x] test your server routes with supertest
 - [ ] test your pure functions both server and client side
 - [x] set up a test database so that you can test your database queries
+- [x] simple authentication
 
 ### Stretch goals
 
@@ -49,6 +50,7 @@ can reserve it for certain dates, with the freedom of unreseving it at anytime.
 * nyc - for testing.
 * Supertest for testing.
 * nodemon - for hosting locally.
+* cookies web api - for a simple authentication
 * Node.js - backend.
 
 ### Team members
