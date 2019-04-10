@@ -73,7 +73,7 @@ const handlePost = (req, res) => {
           if( body != null )
           {
             const hey = qs.parse(body);
-            postData(hey.book, hey.author, hey.year, hey.shortDesc, res, returnPostData, (err) => {
+            postData.postData(hey.book, hey.author, hey.year, hey.shortDesc, res, returnPostData, (err) => {
               if( err )   console.log('error');
 
 
@@ -90,12 +90,19 @@ const returnPostData = ( err, data, res ) => {
   res.end()
 }
 
+const handleCreate = ( res, value ) => {
+  postData.createAccount(value, res, returnPostData, (err) => {
+    if( err )  console.log('error');
 
+
+  });
+}
 
 module.exports = {
   home: handleHome,
   public: handlePublic,
   data: handleData,
   error: handleError,
+  create: handleCreate,
   post: handlePost
 }
