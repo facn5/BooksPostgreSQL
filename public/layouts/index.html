@@ -15,9 +15,7 @@
 <body>
 
   <div id="abc">
-  <!-- Popup Div Starts Here -->
   <div id="popupContact">
-  <!-- Contact Us Form -->
   <form action="#" id="formy" method="post" name="form">
   <h2>Creating an account for you</h2>
   <hr>
@@ -26,12 +24,12 @@
   <a href="javascript:%20check_empty()" id="submit">Start now</a>
   </form>
   </div>
-  <!-- Popup Div Ends Here -->
   </div>
 
 
 <h1>BooksPostgresSQL</h1>
 <div class="arrow--container">
+  <button type="button" id="Logout" name="button">Logout</button>
   <p id="WelcomeMsg"></p>
   <p>Click on the arrow to add a book</p>
 <i id="arrow-down" class="fas fa-arrow-circle-down"></i>
@@ -46,7 +44,7 @@
     <input required placeholder="John smith" type="text" name="author" id="author">
     <br>
     <label for="year">Publish year:</label>
-    <input required placeholder="1984" type="text" name="year" id="year">
+    <input required placeholder="1984" type="text" pattern="0123456789" name="year" id="year">
     <br>
     <label for="shortDesc">Short description:</label>
     <input required placeholder="It starts with a little girl wearing a red hat" type="text" name="shortDesc" id="shortDesc">
