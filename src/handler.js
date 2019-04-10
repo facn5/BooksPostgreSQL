@@ -91,11 +91,48 @@ const handleError = (res) => {
   })
 }
 
+
+const handlePost = (req, res) => {
+
+      let body = '';
+      req.on('data', chunk => {
+          body += chunk.toString(); // convert Buffer to string
+      });
+      req.on('end', () => {
+          if( body != null )
+          {
+            const hey = qs.parse(body);
+            postData.postData(hey.book, hey.author, hey.year, hey.shortDesc, res, returnPostData, (err) => {
+              if( err )   console.log('error');
+
+
+            });
+          }
+      });
+
+  }
+
+const returnPostData = ( err, data, res ) => {
+  if (err) return console.log('error');
+
+  res.writeHead(302, { 'Location': '/' });
+  res.end()
+}
+
+const handleCreate = ( res, value ) => {
+  postData.createAccount(value, res, returnPostData, (err) => {
+    if( err )  console.log('error');
+
+
+  });
+}
+
 module.exports = {
   home: handleHome,
   public: handlePublic,
   data: handleData,
   error: handleError,
-  post: handlePost,
-  delete: handleDelete
+  delete: handleDelete,
+  create: handleCreate,
+  post: handlePost
 }

@@ -11,4 +11,22 @@ const postData = (name, author, year, shortDesc, response, cb) => {
   );
 };
 
-module.exports = postData;
+const createAccount = (name, resp, cb) => {
+
+  name = decodeURI(name);
+
+  dbConnection.query(
+    'INSERT INTO users (name) VALUES ($1)',
+    [name],
+    (err, res) => {
+      if (err) return cb(err);
+
+      cb(null, name, resp);
+    }
+  );
+};
+
+module.exports = {
+  postData,
+  createAccount
+}

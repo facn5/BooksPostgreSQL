@@ -1,4 +1,21 @@
+
 document.getElementById("arrow-down").addEventListener("click", function (e) {
+
+var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
+if( !cookieValue || cookieValue == null || cookieValue == undefined || cookieValue == "" ) {
+  div_show();
+  document.getElementById('WelcomeMsg').style.display = "none";
+}
+else {
+  document.getElementById('WelcomeMsg').innerText = "Hello " + cookieValue+"!";
+  document.getElementById('WelcomeMsg').style.display = "block";
+
+
+}
+
+document.getElementById("arrow-down").addEventListener("click", function(e) {
+
   e.preventDefault();
 
   var x = document.getElementsByClassName("add-book--container")[0];
@@ -6,9 +23,11 @@ document.getElementById("arrow-down").addEventListener("click", function (e) {
   if (x.style.opacity == 1) {
     x.style.position = "absolute";
     x.style.opacity = 0;
+    x.style.visibility = "hidden";
     y.style.color = "#141414";
   } else {
     x.style.position = "relative";
+    x.style.visibility = "visible";
     x.style.opacity = 1;
     y.style.color = "#666";
   }
@@ -16,7 +35,41 @@ document.getElementById("arrow-down").addEventListener("click", function (e) {
 
 getcurrency(updateDom);
 
-function updateDom(data) {
+
+
+
+// Validating Empty Field
+function check_empty() {
+if (document.getElementById('name').value.trim() == "" ) {
+alert("Please enter your full name");
+} else {
+// document.getElementById('formy').submit();
+div_hide();
+
+createAccountFetch(document.getElementById('name').value );
+create( document.getElementById('name').value );
+//alert("Form Submitted Successfully...");
+}
+}
+
+
+function create(value) {
+  document.cookie = "name="+value;
+
+  document.getElementById('WelcomeMsg').innerText = "Hello " + value+"!";
+  document.getElementById('WelcomeMsg').style.display = "block";
+}
+
+function div_show() {
+document.getElementById('abc').style.display = "block";
+}
+
+function div_hide(){
+document.getElementById('abc').style.display = "none";
+}
+
+function updateDom( data ) {
+
 
   var container = document.getElementById('container');
 
