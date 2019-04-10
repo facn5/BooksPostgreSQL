@@ -40,7 +40,7 @@ const handlePublic = (url, res) => {
 }
 
 const handleData = (res) => {
-  getData((err, result) => {
+  getData.getData((err, result) => {
     if (err) {
       res.writeHead(500);
       res.end("server error 500");
@@ -70,6 +70,15 @@ const handlePost = (req, res) => {
 
 const handleCreate = (res, value) => {
   postData.create(value, res, (err, result) => {
+    if (err) return console.log('error');
+    res.writeHead(302, { 'Location': '/' });
+    res.end()
+  });
+}
+
+
+const handleReserve = (res, bookid, userid) => {
+  postData.reserve(bookid, userid, res, (err, result) => {
     if (err) return console.log('error');
     res.writeHead(302, { 'Location': '/' });
     res.end()
@@ -106,5 +115,6 @@ module.exports = {
   error: handleError,
   delete: handleDelete,
   create: handleCreate,
+  reserve: handleReserve,
   post: handlePost
 }
