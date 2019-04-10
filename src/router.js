@@ -15,9 +15,11 @@ const router = (req, res) => {
         handler.post(req,res);
     else
         handler.error(res);
-
-
-  } else {
+  } else if ( url.indexOf( "ca" ) !== -1 ) {
+    url = url.split("?")[1];
+     handler.create(res, url)
+}
+    else {
     handler.error(res);
   }
 }
