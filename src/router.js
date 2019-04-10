@@ -11,7 +11,10 @@ const router = (req, res) => {
     if( req.method === "GET")
     handler.data(res);
   } else if (url === "/postdata") {
+    if( req.method === "POST")
         handler.post(req,res);
+    else
+        handler.error(res);
 
 
   } else {
