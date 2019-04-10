@@ -150,8 +150,8 @@ button {
   border-radius:10px;
   outline: none;
   font-family: 'Roboto', sans-serif;
-  background: #666;
-  color: #FFF;
+  /* background: #666;
+  color: #FFF; */
   transition: 1s ease;
   border: none;
 }
@@ -186,9 +186,9 @@ input[type="text"] {
 
 }
 
-.book-item :nth-child(2)  {
+.book-item :nth-child(2):not(button)  {
   font-size: 0.87em;
-  color: 	#707070;
+  color: 	#707070; 
 }
 
 .book-item :nth-child(3)  {
@@ -199,4 +199,32 @@ input[type="text"] {
 .res-button{
   margin: inherit;
   display: block;
+  border: 2px solid;
+  border-color: green;
+  margin: inherit;
+  display: block;
+  background-color: green;
+}
+
+.res-button:hover {
+  background-color: white;
+  color: green;
+}
+
+.del-button{
+  border: 2px solid;
+  border-color: red;
+  margin: inherit;
+  display: block;
+  background-color: red;
+}
+
+.del-button:hover {
+  background-color: white;
+  color: red;
+}
+
+#div-id {
+  display: flex;
+  justify-content: space-around;
 }
