@@ -1,4 +1,4 @@
-document.getElementById("arrow-down").addEventListener("click", function(e) {
+document.getElementById("arrow-down").addEventListener("click", function (e) {
   e.preventDefault();
 
   var x = document.getElementsByClassName("add-book--container")[0];
@@ -16,14 +16,16 @@ document.getElementById("arrow-down").addEventListener("click", function(e) {
 
 getcurrency(updateDom);
 
-function updateDom( data ) {
+function updateDom(data) {
 
   var container = document.getElementById('container');
 
-  data.map( function( item ){
+  data.map(function (item) {
 
     var newElement = document.createElement('DIV');
     newElement.setAttribute('class', "book-item");
+    newElement.setAttribute('id', `${item.id}`);
+    newElement.setAttribute("onclick", 'return itemClicked(\'' + item.id + '\');')
     var newH3 = document.createElement('h3');
     var p0 = document.createElement('p');
     var p1 = document.createElement('p');
@@ -34,6 +36,10 @@ function updateDom( data ) {
     newElement.append(p0);
     newElement.append(p1);
     container.append(newElement);
+  })
+}
 
-  } )
+const itemClicked = (id) => {
+  let deleted = "deleted=" + id;
+  window.location.href = deleted;
 }
