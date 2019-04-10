@@ -27,6 +27,6 @@ const createAccount = (name, resp, cb) => {
 };
 
 module.exports = {
-  postData,
-  createAccount
+  post: postData,
+  create: createAccount
 }
