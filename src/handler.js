@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const getData = require('./queries/getData');
 const postData = require('./queries/postData');
+const qs = require('querystring');
+
 let extType = {
   html: { "content-type": "text/html" },
   css: { "content-type": "text/css" },
@@ -38,7 +40,10 @@ const handlePublic = (url, res) => {
 
 const handleData = (res) => {
   getData((err,result) => {
-    if(err) console.log('error');
+    if(err) {
+      res.writeHead(500);
+      res.end("server error 500");
+    }
     let dynamicData = JSON.stringify(result);
     res.writeHead(200,extType.json);
     res.end(dynamicData);
@@ -58,21 +63,32 @@ const handleError = (res) => {
   })
 }
 
-const handlePost = (res) => {
+const handlePost = (req, res) => {
 
-    let data = '';
-    res.on('data', chunk => {
-      data += chunk;
-    });
-    res.on('end', () => {
-      const { name, author, year } = qs.parse(data);
-      postData(name, author, year => {
-        if (err) return serverError(err, response);
-        res.writeHead(302, { 'Location': '/' });
-        res.end()
+      let body = '';
+      req.on('data', chunk => {
+          body += chunk.toString(); // convert Buffer to string
       });
-    });
-  };
+      req.on('end', () => {
+          if( body != null )
+          {
+            const hey = qs.parse(body);
+            postData(hey.book, hey.author, hey.year, hey.shortDesc, res, returnPostData, (err) => {
+              if( err )   console.log('error');
+
+
+            });
+          }
+      });
+
+  }
+
+const returnPostData = ( err, data, res ) => {
+  if (err) return console.log('error');
+
+  res.writeHead(302, { 'Location': '/' });
+  res.end()
+}
 
 
 
