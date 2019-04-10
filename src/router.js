@@ -17,13 +17,10 @@ const router = (req, res) => {
       handler.error(res);
   } else if (url.indexOf('deleted') !== -1) {
     handler.delete(url, res);
-  } else {
-        handler.error(res);
-  } else if ( url.indexOf( "ca" ) !== -1 ) {
+  } else if (url.indexOf("ca") !== -1) {
     url = url.split("?")[1];
-     handler.create(res, url)
-}
-    else {
+    handler.create(res, url)
+  } else {
     handler.error(res);
   }
 }

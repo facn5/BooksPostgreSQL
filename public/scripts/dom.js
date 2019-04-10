@@ -1,6 +1,3 @@
-
-document.getElementById("arrow-down").addEventListener("click", function (e) {
-
 var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
 if( !cookieValue || cookieValue == null || cookieValue == undefined || cookieValue == "" ) {
