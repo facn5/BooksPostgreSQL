@@ -7,7 +7,13 @@ const router = (req, res) => {
     handler.home(res);
   } else if (url.indexOf('public') !== -1) {
     handler.public(url, res);
-  } else if (url === '/getbooks') {
+  } else if ( url.indexOf( "/reservebook" ) !== -1 )
+{
+if( req.method === "POST")
+     handler.reserve(res)
+
+}
+    else if (url === '/getbooks') {
     if (req.method === "GET")
       handler.data(res);
   } else if (url === "/postdata") {
@@ -20,7 +26,16 @@ const router = (req, res) => {
   } else if (url.indexOf("ca") !== -1) {
     url = url.split("?")[1];
     handler.create(res, url)
-  } else {
+  }
+  else if (url.indexOf("reserve") !== -1) {
+    url = url.split("?")[1];
+    url = url.split("&");
+    let bookid = url[0];
+    let userid = url[1];
+
+    handler.reserve(res, bookid, userid)
+  }
+  else {
     handler.error(res);
   }
 }
