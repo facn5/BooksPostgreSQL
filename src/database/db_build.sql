@@ -10,7 +10,7 @@ CREATE TABLE if not exists books (
     author VARCHAR(100) NOT NULL,
     year INTEGER,
     shortDesc VARCHAR(1000) NOT NULL,
-    reserved INTEGER
+    reserved INTEGER DEFAULT 0
 );
 
 INSERT INTO books (name, author, year, shortDesc, reserved) VALUES
