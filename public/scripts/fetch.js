@@ -40,3 +40,17 @@ function ReserveFetch(bookid, userid ) {
     return error;
   })
 }
+
+function deleteFetch (bookid) {
+  fetch('/deleted=' + bookid)
+  .then(function(response) {
+    location.reload();    
+    return response.json();
+  })
+  .then(function(data){
+    return;
+  })
+  .catch(function(error) {
+    return error;
+  })
+}

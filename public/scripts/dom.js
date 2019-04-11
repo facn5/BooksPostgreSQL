@@ -5,8 +5,7 @@ if (!cookieValue || cookieValue == null || cookieValue == undefined || cookieVal
   div_show();
   document.getElementById('WelcomeMsg').style.display = "none";
   document.getElementById('Logout').style.display = "none";
-}
-else {
+} else {
   document.getElementById('WelcomeMsg').innerText = "Hello " + cookieValue + "!";
   document.getElementById('Logout').style.display = "inline-block";
   document.getElementById('WelcomeMsg').style.display = "block";
@@ -38,13 +37,11 @@ document.getElementById("arrow-down").addEventListener("click", function (e) {
 });
 
 getcurrency(updateDom);
-// getuserid(setid);
 
-function setid( data ) {
+function setid(data) {
   userid = data;
 }
 
-// Validating Empty Field
 function check_empty() {
   if (document.getElementById('name').value.trim() == "") {
     alert("Please enter your full name");
@@ -74,11 +71,9 @@ function updateDom(data) {
 
   var container = document.getElementById('container');
 
-  for (var i = 0; i <= data.length - 1; i++) {
+  data.forEach((item) => {
     var newElement = document.createElement('DIV');
-
     var resButton = document.createElement('button');
-    var input = document.createElement("input");
     var delBtn = document.createElement('button');
     var newH3 = document.createElement('h3');
     var p0 = document.createElement('p');
@@ -86,54 +81,32 @@ function updateDom(data) {
     var div = document.createElement('div');
 
     delBtn.setAttribute('class', "del-button");
-    delBtn.setAttribute("onclick", 'return itemClicked(\'' + data[i].id + '\')');
-
+    delBtn.setAttribute("onclick", 'deleteFetch(\'' + item.id + '\')');
     newElement.setAttribute('class', "book-item");
-
-
-
     resButton.setAttribute('class', "res-button");
-    resButton.id = "ko" + i;
-    resButton.value = data[i].id;
+    div.setAttribute('class', 'div-id');
+    p1.setAttribute("id", 'item.id');
 
-    div.setAttribute('class','div-id');
-
-    newH3.innerText = data[i].name;
-    p0.innerText = data[i].shortdesc;
-    p1.innerText = data[i].year + " By " + data[i].author;
-
-    resButton.innerText = ( ( data[i].reserved == 1 ? "Unr" : "R"  ) + "eserve the book" )
-
+    resButton.id = item.id;
+    resButton.value = item.id;
+    newH3.innerText = item.name;
+    p0.innerText = item.shortdesc;
+    p1.innerText = item.year + " By " + item.author;
+    resButton.innerText = ((item.reserved == 1 ? "Unr" : "R") + "eserve the book")
     delBtn.innerText = "Delete the book"
+
     newElement.append(newH3);
     newElement.append(p0);
     newElement.append(p1);
     container.append(newElement);
     newElement.append(resButton);
-    // var input = document.createElement("input");
-    //
-    // input.setAttribute('type', 'date');
-    // input.style.display = "block"
-    // input.setAttribute('id', 'text' + i);
-    p1.setAttribute("id", i);
-    document.getElementById("ko" + i).addEventListener("click", (e) => {
-      //e.preventDefault()
-        ReserveFetch(e.target.value, cookieValue);
-
-        e.target.innerText = e.target.innerText.indexOf('Un') !== -1 ? "Reserve the book" : "Unreserve the book";
-  //    widow.location.href =
-
-    //  document.getElementById((e.target.id).charAt(2)).append(input);
-    })
     newElement.append(div);
     div.append(resButton);
     div.append(delBtn);
 
-
-  }
-}
-
-const itemClicked = (id) => {
-  let deleted = "deleted=" + id;
-  window.location.href = deleted;
+    document.getElementById(item.id).addEventListener("click", (e) => {
+      ReserveFetch(e.target.value, cookieValue);
+      e.target.innerText = e.target.innerText.indexOf('Un') !== -1 ? "Reserve the book" : "Unreserve the book";
+    });
+  });
 }

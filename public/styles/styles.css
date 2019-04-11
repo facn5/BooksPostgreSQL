@@ -154,8 +154,8 @@ button {
   border-radius:10px;
   outline: none;
   font-family: 'Roboto', sans-serif;
-  /* background: #666;
-  color: #FFF; */
+  background: #666;
+  color: #FFF;
   transition: 1s ease;
   border: none;
 }
