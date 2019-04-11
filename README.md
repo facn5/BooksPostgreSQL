@@ -19,7 +19,7 @@ You can Add a book, Delete a book, Review a book and make a reservation for it.
 ### How to use locally?
 
 1. git clone this repo.
-2. git install, if something was missing, please install manually to your machine, nyc, pg, tape, tape-spec, supertest, nodemon.
+2. npm install, if something was missing, please install manually to your machine, nyc, pg, tape, tape-spec, supertest, nodemon.
 3. test scripts are : "npm run testbackend | npm run testdb"
 4. to deploy the server, we made an easy script for you, just type in your terminal 'npm run connect', and it will be deployed with nodemon, if you with to deploy without nodemon, just type in 'run start'.
 5. Have fun!
@@ -65,3 +65,5 @@ You can Add a book, Delete a book, Review a book and make a reservation for it.
 * Faris: [Github Profile Page](https://github.com/faris114)
 * Obaydah: [Github Profile Page](https://github.com/obayda)
 
+All rights reserved 2019, for the whole application and the readme file.
+Please don't embarrass yourself
