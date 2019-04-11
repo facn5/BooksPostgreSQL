@@ -96,7 +96,7 @@ function updateDom(data) {
     resButton.id = "ko" + i;
     resButton.value = data[i].id;
 
-    div.setAttribute('id','div-id');
+    div.setAttribute('class','div-id');
 
     newH3.innerText = data[i].name;
     p0.innerText = data[i].shortdesc;
@@ -128,7 +128,6 @@ function updateDom(data) {
     newElement.append(div);
     div.append(resButton);
     div.append(delBtn);
-
 
 
   }
