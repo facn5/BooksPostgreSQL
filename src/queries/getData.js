@@ -7,6 +7,13 @@ const getData = (cb) => {
   });
 }
 
+const getNames = (cb) => {
+  dbConnection.query('SELECT name FROM users;',(err, result) => {
+    if(err) cb(err);
+    cb(null, result.rows);
+  });
+}
+
 const getBookid = (id, cb) => {
   dbConnection.query('SELECT * FROM books where id = '+id+';',(err, result) => {
     if(err) cb(err);
@@ -23,5 +30,6 @@ const getUserReservation = (value, cb) => {
 
 module.exports = {
   getData,
-  getBookid
+  getBookid,
+  getNames
 }
