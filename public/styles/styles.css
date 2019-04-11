@@ -114,6 +114,10 @@ label {
   color: #FFF;
 }
 
+label[for="name"] {
+  color: #000;
+}
+
 .add-form {
   position: relative;
   transition: all 1.2s ease;
@@ -188,7 +192,7 @@ input[type="text"] {
 
 .book-item :nth-child(2):not(button)  {
   font-size: 0.87em;
-  color: 	#707070; 
+  color: 	#707070;
 }
 
 .book-item :nth-child(3)  {
@@ -200,6 +204,7 @@ input[type="text"] {
   margin: inherit;
   display: block;
   border: 2px solid;
+  color: #FFF;
   border-color: green;
   margin: inherit;
   display: block;
@@ -213,18 +218,19 @@ input[type="text"] {
 
 .del-button{
   border: 2px solid;
-  border-color: red;
+  border-color: #8b0000;
   margin: inherit;
+  color: #FFF;
   display: block;
-  background-color: red;
+  background-color: #8b0000;
 }
 
 .del-button:hover {
   background-color: white;
-  color: red;
+  color: #8b0000;
 }
 
-#div-id {
+.div-id {
   display: flex;
   justify-content: space-around;
 }
