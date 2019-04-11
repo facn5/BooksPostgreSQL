@@ -13,18 +13,37 @@ const postData = (name, author, year, shortDesc, response, cb) => {
   );
 };
 
+
+
 const createAccount = (name, resp, cb) => {
 
+  let no = false;
   name = decodeURI(name);
-  dbConnection.query(
-    'INSERT INTO users (name) VALUES ($1)',
-    [name],
-    (err, res) => {
-      if (err) return cb(err);
 
-      cb(null, name, resp);
-    }
-  );
+  getData.getNames( (err,result)=> {
+
+       for( var i = 0; i < result.length; i++ ) {
+         if( name == result[i].name )
+           no = true;
+
+}
+         if( !no ) {
+           dbConnection.query(
+             'INSERT INTO users (name) VALUES ($1)',
+             [name],
+             (err, res) => {
+               if (err) return cb(err);
+
+               cb(null, name, resp);
+             }
+
+           );
+         }
+
+
+  });
+
+
 };
 
 const reserveBook = (bookid, userid , resp, cb) => {
